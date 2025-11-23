@@ -33,19 +33,19 @@ def get_poem(day_description):
     client = OpenAI(api_key=api_key)
     
     poets = [
-        #"Emily Dickinson",
-        # "T.S. Eliot",
-        # "Langston Hughes",
-        # "Sylvia Plath",
-        #"Seamus Heaney",
-        # "Shel Silverstein"
-        #"Lewis Carroll",
-        #"Robert Frost",
-        #"Ogden Nash",
-        #"Pablo Neruda",
-        #"Dr. Seuss"
+        "Emily Dickinson",
+        "T.S. Eliot",
+        "Langston Hughes",
+        "Sylvia Plath",
+        "Seamus Heaney",
+        "Shel Silverstein",
+        "Lewis Carroll",
+        "Robert Frost",
+        "Ogden Nash",
+        "Pablo Neruda",
+        "Dr. Seuss"
     ]
-    selected_poet = random.choice(poets) if poets else "a poet"
+    selected_poet = random.choice(poets) if poets else "Unknown Poet"
     
     try:
         # Get system prompt template from env or secrets
