@@ -1,7 +1,4 @@
 streamlit
 openai
 python-dotenv
-
-
-
-
+st-copy-to-clipboard

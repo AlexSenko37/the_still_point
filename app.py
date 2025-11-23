@@ -4,9 +4,14 @@ import os
 import random
 import time
 from dotenv import load_dotenv
+from st_copy_to_clipboard import st_copy_to_clipboard
 
 # Load environment variables
 load_dotenv()
+
+# Note: utils/redshift_connection.py was not found in the workspace, 
+# so the Redshift integration has been omitted. 
+# To add it, create the file and import it here.
 
 def get_poem(day_description):
     # Try to get key from environment variable (e.g. .env file)
@@ -29,20 +34,19 @@ def get_poem(day_description):
     client = OpenAI(api_key=api_key)
     
     poets = [
-       "Emily Dickinson",
-        "T.S. Eliot",
-        "Langston Hughes",
-        "Sylvia Plath",
-        "W.B. Yeats",
-        "Seamus Heaney",
-        "Shel Silverstein"
-        "Lewis Carroll",
-        "Robert Frost",
-        "Ogden Nash",
-        "Pablo Neruda",
-        "Dr. Seuss"
+        #"Emily Dickinson",
+        # "T.S. Eliot",
+        # "Langston Hughes",
+        # "Sylvia Plath",
+        #"Seamus Heaney",
+        # "Shel Silverstein"
+        #"Lewis Carroll",
+        #"Robert Frost",
+        #"Ogden Nash",
+        #"Pablo Neruda",
+        #"Dr. Seuss"
     ]
-    selected_poet = random.choice(poets)
+    selected_poet = random.choice(poets) if poets else "a poet"
     
     try:
         # Get system prompt template from env or secrets
@@ -203,8 +207,8 @@ def main():
     /* Poem Display */
     .poem-container {
         background-color: #1E1E1E;
-        padding: 2rem 1.5rem;
-        margin-top: 3rem;
+        padding: 0rem 0rem;
+        margin-top: 2rem;
         box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         border: 1px solid #333333;
         max-width: 600px;
@@ -214,7 +218,7 @@ def main():
     }
     
     .poem-text {
-        font-size: 1.1rem;
+        font-size: 0.8rem;
         line-height: 1.7;
         color: #E0E0E0;
         width: 100%;
@@ -282,9 +286,14 @@ def main():
                 poem_placeholder.markdown(f"""
                 <div class="poem-container">
                     <div class="poem-text">{final_html}</div>
-                    <div class="attribution">- {poet}</div>
+                    <!-- <div class="attribution">- {poet}</div> -->
                 </div>
                 """, unsafe_allow_html=True)
+                
+                # Copy button
+                st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True) # Spacer
+                st_copy_to_clipboard(poem, btn_text="📋", after_copy_btn_text="✅")
+
         else:
             st.info("Please share a few words first.")
 
