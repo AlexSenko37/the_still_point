@@ -29,16 +29,17 @@ def get_poem(day_description):
     client = OpenAI(api_key=api_key)
     
     poets = [
-       #"Emily Dickinson",
-       # "T.S. Eliot",
-       # "Langston Hughes",
-       # "Sylvia Plath",
-        #"Seamus Heaney",
-       # "Shel Silverstein"
-        #"Lewis Carroll",
-        #"Robert Frost",
-        #"Ogden Nash",
-        #"Pablo Neruda",
+       "Emily Dickinson",
+        "T.S. Eliot",
+        "Langston Hughes",
+        "Sylvia Plath",
+        "W.B. Yeats",
+        "Seamus Heaney",
+        "Shel Silverstein"
+        "Lewis Carroll",
+        "Robert Frost",
+        "Ogden Nash",
+        "Pablo Neruda",
         "Dr. Seuss"
     ]
     selected_poet = random.choice(poets)
@@ -120,23 +121,6 @@ def main():
         page_icon="📜",
         layout="centered"
     )
-
-    # Debug/Status Indicator
-    with st.sidebar:
-        prompt_active = False
-        if os.getenv("POEM_SYSTEM_PROMPT"):
-            prompt_active = True
-        else:
-            try:
-                if "POEM_SYSTEM_PROMPT" in st.secrets:
-                    prompt_active = True
-            except:
-                pass
-                
-        if prompt_active:
-            st.success("Secret Prompt Active ✨")
-        else:
-            st.warning("Using Default Prompt ⚠️")
     
     # Check password before showing the app
     if not check_password():
@@ -219,7 +203,7 @@ def main():
     /* Poem Display */
     .poem-container {
         background-color: #1E1E1E;
-        padding: 4rem 3rem;
+        padding: 2rem 1.5rem;
         margin-top: 3rem;
         box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         border: 1px solid #333333;
@@ -230,7 +214,7 @@ def main():
     }
     
     .poem-text {
-        font-size: 1.25rem;
+        font-size: 1.1rem;
         line-height: 1.7;
         color: #E0E0E0;
         width: 100%;
