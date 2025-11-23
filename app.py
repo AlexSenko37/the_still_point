@@ -217,7 +217,7 @@ def main():
     }
     
     .poem-text {
-        font-size: 0.8rem;
+        font-size: 1rem;
         line-height: 1.7;
         color: #E0E0E0;
         width: 100%;
