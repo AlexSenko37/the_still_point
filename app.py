@@ -292,7 +292,7 @@ def main():
                 
                 # Copy button
                 st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True) # Spacer
-                st_copy_to_clipboard(poem, btn_text="📋", after_copy_btn_text="✅")
+                st_copy_to_clipboard(poem, before_copy_label="📋", after_copy_label="✅")
 
         else:
             st.info("Please share a few words first.")
