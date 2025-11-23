@@ -4,7 +4,6 @@ import os
 import random
 import time
 from dotenv import load_dotenv
-from st_copy_to_clipboard import st_copy_to_clipboard
 
 # Load environment variables
 load_dotenv()
@@ -286,14 +285,10 @@ def main():
                 poem_placeholder.markdown(f"""
                 <div class="poem-container">
                     <div class="poem-text">{final_html}</div>
-                    <!-- <div class="attribution">- {poet}</div> -->
+                    <div class="attribution">- {poet}</div>
                 </div>
                 """, unsafe_allow_html=True)
                 
-                # Copy button
-                st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True) # Spacer
-                st_copy_to_clipboard(poem, before_copy_label="📋", after_copy_label="✅")
-
         else:
             st.info("Please share a few words first.")
 
